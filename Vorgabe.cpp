@@ -11,7 +11,7 @@ using namespace std;
 
 // Funktion zum Abfangen von Zombieprozessen
 void handle_zombie(int sig) {
-    wait(NULL);
+    wait(0);
     }
 
 
@@ -38,8 +38,8 @@ int main() {
     {
         signal(SIGCHLD, handle_zombie); // Verwenden Sie SIGCHLD als Signal für den Kindprozess
 
-        // sleep
-        sleep(5);
+        
+        wait(NULL);
 
         string text;
 
