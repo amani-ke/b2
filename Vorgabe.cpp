@@ -11,8 +11,9 @@ using namespace std;
 
 // Funktion zum Abfangen von Zombieprozessen
 void handle_zombie(int sig) {
-    int status;
-    while(waitpid((pid_t)(-1), &status, WNOHANG) > 0) {}}
+    wait(NULL);
+    }
+
 
 int main() {
 
@@ -38,7 +39,7 @@ int main() {
         signal(SIGCHLD, handle_zombie); // Verwenden Sie SIGCHLD als Signal für den Kindprozess
 
         // sleep
-        sleep(1);
+        sleep(5);
 
         string text;
 
@@ -56,8 +57,6 @@ int main() {
             }
             datei.close();
         }
-        // Waisenprozesse verhindern
-        waitpid(pid, NULL, 0);
 
     }
 
